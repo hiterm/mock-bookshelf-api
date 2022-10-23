@@ -25,4 +25,8 @@ export const mocks = {
     id: () => faker.datatype.uuid(),
     name: () => faker.name.fullName(),
   }),
+  Query: () => ({
+    books: () => Array.from({ length: getRandomInt(100, 200) }),
+    authors: () => Array.from({ length: getRandomInt(100, 200) }),
+  }),
 };
