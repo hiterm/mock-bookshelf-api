@@ -16,7 +16,7 @@ export const mocks = {
     isbn: () => genIsbn13(),
     read: faker.datatype.boolean(),
     owned: faker.datatype.boolean(),
-    priority: getRandomInt(0, 100),
+    priority: getRandomInt(0, 101),
     createdAt: Math.floor(faker.date.past().getTime() / 1000),
     updatedAt: Math.floor(faker.date.past().getTime() / 1000),
     authors: () => Array.from({ length: getRandomInt(1, 4) }),
