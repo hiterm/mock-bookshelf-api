@@ -3,12 +3,14 @@ import { addMocksToSchema } from "@graphql-tools/mock";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs } from "./typeDefs";
+import { mocks } from "./mocks";
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({
   schema: addMocksToSchema({
     schema: makeExecutableSchema({ typeDefs }),
+    mocks
   }),
 });
 
