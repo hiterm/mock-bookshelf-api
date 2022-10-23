@@ -8,10 +8,11 @@ const calcCheckDigit = (isbn13: number[]) => {
   return (10 - (s % 10)) % 10;
 };
 
+// The maximum is exclusive and the minimum is inclusive
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 export const genIsbn13 = (): string => {
@@ -19,7 +20,7 @@ export const genIsbn13 = (): string => {
     9,
     7,
     8,
-    ...Array.from({ length: 9 }).map(() => getRandomInt(0, 9)),
+    ...Array.from({ length: 9 }).map(() => getRandomInt(0, 10)),
   ];
   isbn.push(calcCheckDigit(isbn));
   return isbn.join("");
