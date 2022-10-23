@@ -15,6 +15,8 @@
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@graphql-tools/mock": "^8.7.6",
+    "@graphql-tools/schema": "^9.0.4",
     "@types/node": "^18.11.3",
     "typescript": "^4.8.4"
   }

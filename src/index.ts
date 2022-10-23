@@ -1,4 +1,6 @@
 import { ApolloServer } from "@apollo/server";
+import { addMocksToSchema } from "@graphql-tools/mock";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 // A schema is a collection of type definitions (hence "typeDefs")
@@ -21,30 +23,12 @@ const typeDefs = `#graphql
   }
 `;
 
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-// Resolvers define how to fetch the types defined in your schema.
-// This resolver retrieves books from the "books" array above.
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
-
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema: addMocksToSchema({
+    schema: makeExecutableSchema({ typeDefs }),
+  }),
 });
 
 // Passing an ApolloServer instance to the `startStandaloneServer` function:
