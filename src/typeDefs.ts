@@ -3,10 +3,10 @@ type Author {
 	id: ID!
 	name: String!
 }
+
 type Book {
 	id: String!
 	title: String!
-	authorIds: [String!]!
 	isbn: String!
 	read: Boolean!
 	owned: Boolean!
@@ -17,18 +17,23 @@ type Book {
 	updatedAt: Int!
 	authors: [Author!]!
 }
+
 enum BookFormat {
 	E_BOOK
 	PRINTED
 	UNKNOWN
 }
+
 enum BookStore {
 	KINDLE
 	UNKNOWN
 }
+
+
 input CreateAuthorInput {
 	name: String!
 }
+
 input CreateBookInput {
 	title: String!
 	authorIds: [String!]!
@@ -39,6 +44,10 @@ input CreateBookInput {
 	format: BookFormat!
 	store: BookStore!
 }
+
+
+
+
 type Mutation {
 	registerUser: User!
 	createBook(bookData: CreateBookInput!): Book!
@@ -46,6 +55,7 @@ type Mutation {
 	deleteBook(bookId: ID!): String!
 	createAuthor(authorData: CreateAuthorInput!): Author!
 }
+
 type Query {
 	loggedInUser: User
 	book(id: ID!): Book
@@ -53,6 +63,8 @@ type Query {
 	author(id: ID!): Author
 	authors: [Author!]!
 }
+
+
 input UpdateBookInput {
 	id: String!
 	title: String!
@@ -64,9 +76,11 @@ input UpdateBookInput {
 	format: BookFormat!
 	store: BookStore!
 }
+
 type User {
 	id: ID!
 }
+
 schema {
 	query: Query
 	mutation: Mutation
